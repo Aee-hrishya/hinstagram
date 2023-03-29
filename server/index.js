@@ -10,6 +10,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import { register } from "./controllers/auth.js";
 import authRoutes from "./routes/auth.js";
+import userRoutes from "./routes/users.js";
 
 // configurations
 const __filename = fileURLToPath(import.meta.url);
@@ -42,6 +43,7 @@ app.post("/auth/register", upload.single("picture"), register);
 
 //Routes
 app.use("/auth", authRoutes);
+app.use("/users", userRoutes);
 
 //mongodb connection
 const PORT = process.env.PORT || 6000;
