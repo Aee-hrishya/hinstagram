@@ -48,6 +48,8 @@ export const login = async (req, res) => {
   if (!isMatch) return res.status(400).json({ msg: "Wrong password" });
 
   const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+
   delete user.password; //deleting the fetched password so that we dont send it to the frontend in the form of response
-  res.status(200).json(token, user);
+  console.log(user);
+  res.status(200).json({ token, user });
 };
