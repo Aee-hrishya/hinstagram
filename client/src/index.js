@@ -17,6 +17,7 @@ import {
 import storage from "redux-persist/lib/storage";
 import { PersistGate } from "redux-persist/integration/react";
 
+const root = ReactDOM.createRoot(document.getElementById("root"));
 const persistConfig = { key: root, storage, version: 1 };
 const persistedReducer = persistReducer(persistConfig, authReducer);
 const store = configureStore({
@@ -28,7 +29,7 @@ const store = configureStore({
       },
     }),
 });
-const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>
